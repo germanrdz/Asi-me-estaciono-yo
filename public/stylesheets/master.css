@@ -1,0 +1,297 @@
+body {
+	color: #1F1F1F;
+	background-color: #1F1F1F;
+	margin: 0px;
+	padding: 0px;
+	font: normal 14px "Lucida Grande", arial, tahoma, sans-serif;
+}
+
+img {
+	border: 0px;
+}
+
+a { color: #8BB903; text-decoration: none;}
+a:hover { color: #B0DD28;}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 940px;
+}
+
+/* header
+----------------------------------------------- */
+#header {
+	width: 940px;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	padding: 10px;
+	overflow: auto;
+}
+
+#header h2 {
+	font-size: 25px;
+	margin-top: 5px;
+    margin-bottom: 0px;
+    color: #7a7a7a;
+	overflow: auto;
+	text-align: left;
+}
+
+#header #upload form .help {
+	margin-bottom: 10px;
+}
+
+#header #upload {
+	float: right;
+	margin-right: 15px;
+
+}
+
+#header #upload .fields {
+	padding: 15px;
+
+}
+
+#header #upload input {
+	font-size: 16px;
+	padding: 5px;
+	margin: 3px;
+	width: 225px;
+}
+
+#header #upload .toilet_upload {
+	font-size: 16px;
+	margin-top: 8px;
+	overflow: hidden;
+	width: 500px;
+}
+
+#header #upload .toilet_upload span {
+	float: left;
+	margin-top: 5px;
+	margin-right: 10px;
+}
+
+#header #upload .toilet_upload input.toilet {
+	float: left;
+	width: 100px;
+	font-size: 12px;
+}
+
+#header #upload #submit {
+	margin-top: 10px;
+	float: left;
+}
+
+#header #upload .overlay {
+	color: silver;
+}
+
+#header .logo {
+	float: left;
+	margin-top: 15px;
+}
+
+#header .user_login a {
+	color: #fff;
+}
+
+#header .user_login a:hover {
+	cursor: pointer;
+}
+
+#header .user_login img {
+	margin-right: 10px;
+	border: 1px solid #fff;
+}
+
+
+/* menu
+----------------------------------------------- */
+
+#menu {
+	border-top: 8px solid #83A21F;
+	width: 940px;
+	margin: 0 auto;
+	background-color: #B6B652;
+	padding: 10px;
+	overflow: auto;
+}
+
+#menu .navigation {
+	float: left;
+	margin-left: 10px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: -1px;
+}
+
+#menu .navigation a {
+	color: #FFF;
+	text-decoration: none;
+	margin-left: 10px;
+	padding: 10px 10px;
+	margin: 0px;
+}
+
+#menu .navigation a.active {
+	background-color: #83A21F;
+}
+
+#menu .navigation a.active:hover {
+	background-color: #83A21F;
+}
+
+#menu .navigation a:hover {
+	background-color: #83A21F;
+}
+
+#menu .sharing {
+	float: right;
+	color: #fff;
+    height: 15px;
+    margin-top: -3px;	
+}
+
+#menu #login {
+    float: right;
+    margin-top: -3px;
+}
+
+
+
+/* content
+----------------------------------------------- */
+
+#content {
+
+	border-bottom: 8px solid #835E41;
+	width: 940px;
+	margin: 0 auto;
+	background-color: #FFF;
+	padding: 10px;
+	overflow: auto;
+}
+
+#content .quote {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#content .gallery table {
+	margin: 0 auto;
+}
+
+#content .gallery td {
+	text-align: center;
+	padding-bottom: 10px;
+	padding: 5px;
+	width: 120px;
+}
+
+
+#content .gallery td .thumbnail {
+	position: relative;
+}
+
+#content .gallery td .votes {
+    padding: 3px;
+	color: #FFF;
+	width: auto;
+	font-size: 10px;
+	font-weight: bold;
+	
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	border: 1px solid white;
+}
+
+#content .gallery td .location {
+	font-weight: bold;
+	text-align: center;
+}
+
+#content .gallery td .name {
+	font-size: 11px;
+}
+
+
+#content .gallery td .green {
+	background-color: #869802;
+}
+
+#content .gallery td .red {
+	background-color: #b70e01;
+}
+
+
+#content .gallery td .json_encoded {
+	display: none;
+}
+
+#content .loadmore {
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	width: 100px;
+}
+
+#content #view_window {
+	display: none;
+}
+
+
+/* footer
+----------------------------------------------- */
+#footer {
+	clear: both;
+	color:#333333;
+	padding-bottom: 30px;
+	padding-top: 10px;
+	margin-top: 30px;
+	font-size: 12px;
+	width: 940px;
+	margin: 0 auto;
+}
+
+#ads {
+	float: right;
+}
+
+
+/* style boxes
+----------------------------------------------- */
+.info, .success, .warning, .error, .validation {
+    border: 1px solid;
+    margin: 10px 0px;
+	padding-left: 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+
+.info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('../../public/images/info.png');
+}
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('../../public/images/success.png');
+}
+.warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('../../public/images/warning.png');
+}
+
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../../public/images/error.png');
+}

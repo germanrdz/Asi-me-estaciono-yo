@@ -1,0 +1,68 @@
+
+#toilet h1 {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+#toilet .image {
+	width: 100%;
+	text-align: center;
+}
+
+#toilet .image span {
+	font: bold 50px sans-serif;
+	margin: 10px;
+	line-height: 50px;
+}
+
+#toilet .image a {
+	color: #ab7e5c;
+}
+
+#toilet .image a:hover {
+	color: #6b503b;
+}
+
+#toilet .image img {
+	vertical-align: middle;
+}
+
+#toilet .toiletinfo,
+#toilet .comments {
+	width: 700px;
+	margin: 0 auto;
+	overflow: auto;
+	padding: 20px 0px;
+}
+
+#toilet .uploaded {
+	float: left;
+}
+
+#toilet .location {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#toilet .name {
+	
+}
+
+#toilet .votes {
+	float: right;
+}
+
+#toilet .votes .count {
+	font-size: 35px;
+	font-weight: bold;
+	padding: 6px;
+	color: #FFF;
+}
+
+#toilet .green {
+	background-color: #869802;
+}
+
+#toilet .red {
+	background-color: #b70e01;
+}

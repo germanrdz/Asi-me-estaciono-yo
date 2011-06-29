@@ -1,0 +1,1 @@
+ALTER TABLE `entries` ADD `votes` INT NOT NULL DEFAULT '0' AFTER `created` 
