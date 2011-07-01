@@ -11,7 +11,8 @@
 |	http://example.com/
 |
 */
-	$config['base_url']	= "http://localhost/asimeestacionoyo.com/";
+$config['base_url']	= "http://localhost/asimeestacionoyo.com/";
+//$config['base_url']	= "http://www.asimeestacionoyo.local/";
 
 /*
 |--------------------------------------------------------------------------
@@ -231,7 +232,7 @@ $config['encryption_key'] = "";
 | 'time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'thetoiletproject_session';
+$config['sess_cookie_name']		= 'asimeestacionoyo_session';
 $config['sess_expiration']		= 28800;
 $config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= TRUE;

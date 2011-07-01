@@ -19,6 +19,7 @@
 			
 			define('FACEBOOK_APP_ID', '133512650062074');
 			define('FACEBOOK_SECRET', '98dc67b994a453e68788a501c36612be');
+
 		}
 		
 		function top() {
@@ -100,17 +101,14 @@
 		
 		function index($page = 0)
 		{
-			//$this->load->library('pagination');
-			
 			
 			// process Upload
-			if ($_POST) 
-			{
+			if ($_POST) {
 				$this->load->helper("random");
 				$error = $this->entries->insert();
-			
+				
 				if ($error == "OK") {
-					$this->session->set_flashdata('success', "Your toilet has been uploaded, it will be reviewed by a moderator before you can see it published, dont worry it only takes a couple of hours");
+					$this->session->set_flashdata('success', "Your picture has been uploaded successfully");
 					redirect('//main', 'location');
 				}
 				else
@@ -120,9 +118,15 @@
 				}
 			}
 
-            $cookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
-            $user = $this->facebook->getCurrentUser($cookie);
+            $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
 			
+			if ($fbcookie) {
+				$user = $this->facebook->getCurrentUser($fbcookie);
+			}
+			else {
+				$user = array();
+			}	
+
 			// load main header
 			$include["stylesheets"] = array();
 			$include["scripts"] = array();
@@ -131,10 +135,6 @@
 			$include["title"] = "";
 			$include["user"] = $user;
             
-            //print_r($cookie);
-            //print_r($user);
-            //die();
-
 			$this->load->view('header', $include);
 			
 			// bussines logic 
@@ -167,7 +167,14 @@
 		{
 			redirect('http://www.germanrdz.com');
 		}
+
+		function logout()
+		{
+			$this->session->sess_destroy();
+			redirect('/', 'refresh');	
+		}
 	
+
 	}
 
 ?>

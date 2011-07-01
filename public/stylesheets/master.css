@@ -127,7 +127,7 @@ h1 {
 	margin-left: 10px;
 	font-size: 15px;
 	font-weight: bold;
-	margin-top: -1px;
+	margin-top: 0px;
 }
 
 #menu .navigation a {
@@ -160,9 +160,22 @@ h1 {
 #menu #login {
     float: right;
     margin-top: -3px;
+    vertical-align: top;
+
+    color: #FFF;
+    font-weight: bold;
 }
 
+#menu #login a { 
+    font-size: 10px;
+    color: #FFF;
+}
 
+#menu #login .picture { 
+    border: 1px solid #FFF;
+    height: 19px;
+    margin-right: 5px;
+}
 
 /* content
 ----------------------------------------------- */

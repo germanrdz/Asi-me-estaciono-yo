@@ -266,7 +266,7 @@ class entries extends Model {
 			'image'		=>	$preview,
 			'created'	=>	time(),
 			'ip'		=>	GetHostByName($_SERVER['REMOTE_ADDR']),
-			'active'	=>	0
+			'active'	=>	1
 		);
 		
 		$this->db->insert("entries", $data);

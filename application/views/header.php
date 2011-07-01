@@ -34,38 +34,25 @@
 	</head>
 
 	<body>
-      <!-- FACEBOOK API -->
-      <div id="fb-root"></div>
-      <script src="http://connect.facebook.net/en_US/all.js"></script>
-      <script>
-         FB.init({ 
-            appId:'133512650062074', cookie:true, 
-            status:true, xfbml:true 
-         });
-      </script>
-
-			 		
 		<div id="menu">
-
 			<?
 				$homeclass = ($active_page == "home") ? "class='active'" : "";
 				$topclass = ($active_page == "top") ? "class='active'" : "";
 				$randomclass = ($active_page == "random") ? "class='active'" : "";
 			?>
-		
 			<div class="navigation">
 				<?= anchor("/", "Inicio", $homeclass); ?><?= anchor("top", "Las mas votadas", $topclass); ?><?= anchor("random", "100 Aleatorias", $randomclass); ?><?= anchor("main/contact", "Contacto"); ?>				
 			</div>
 
                     <div id="login">
-                    <?
-                    if ($user) {
-                        ?>
+                    <? if (!$user): ?>
                         <fb:login-button>Login with Facebook</fb:login-button>
-                        <?
-                    }     
-                         ?>
-     </div>
+                    <? else: ?>
+					    <a href="javascript:;"><img class="picture" src="http://graph.facebook.com/<?= $user->id ?>/picture?type=square" height="20" align="left"/> </a>
+					    <?= $user->name ?>
+					<?= anchor("logout", "(cerrar sesion)"); ?>
+					<? endif; ?>
+					</div>
 		
 			<div class="sharing">
 				<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.thetoiletproject.com/" data-text="where are the toilets join togheter for the world! upload your toilet picture now!" data-count="horizontal" data-via="GerManson">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
