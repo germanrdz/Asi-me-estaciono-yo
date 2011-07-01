@@ -1,6 +1,6 @@
 
 		<div id="footer">
-			<b>TheToiletProject.com</b> > Where all the toilets join together for the world |
+			<b>AsiMeEstacionoYo.com</b> > Sube tus fotos de gente mal estacionada | 
 			Designed by <a href="http://www.germanrdz.com" target="_blank">German Rodriguez</a>
 		</div>
 

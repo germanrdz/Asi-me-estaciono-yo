@@ -219,15 +219,15 @@ class entries extends Model {
 		// validate
 		if ($file["name"] == "")
 		{
-			return "<p>You must provide us a picture in order to upload a toilet</p>";
+			return "<p>Selecciona una foto antes de picarle al boton! =/</p>";
 		}
 		
-		if ($this->input->post("name") == "" || $this->input->post("name") == "Your Name") {
-			return "<p>You forgot to type your name</p>";
+		if ($this->input->post("title") == "" || $this->input->post("title") == "Titulo de la foto") {
+			return "<p>Olvidarte ponerle un titulo a la foto</p>";
 		}
 		
-		if ($this->input->post("location") == "" || $this->input->post("location") == "Location") {
-			return "<p>You need to tell us where you found this toilet</p>";
+		if ($this->input->post("location") == "" || $this->input->post("location") == "Lugar donde fue tomada") {
+			return "<p>Necesitas decirnos donde tomaste esta foto!</p>";
 		}	
 		
 		$preview = generateRandomString(7);
@@ -263,6 +263,8 @@ class entries extends Model {
 		$data = array(
 			'name'		=>	$this->input->post("name"),
 			'location'	=>	$this->input->post("location"),
+            'title'     =>  $this->input->post("title"),
+            'userid'    =>  $this->input->post("userid"),
 			'image'		=>	$preview,
 			'created'	=>	time(),
 			'ip'		=>	GetHostByName($_SERVER['REMOTE_ADDR']),

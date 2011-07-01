@@ -1,6 +1,6 @@
 body {
-	color: #1F1F1F;
-	background-color: #1F1F1F;
+	color: #2B3E42;
+	background-color: #747E80;
 	margin: 0px;
 	padding: 0px;
 	font: normal 14px "Lucida Grande", arial, tahoma, sans-serif;
@@ -10,8 +10,8 @@ img {
 	border: 0px;
 }
 
-a { color: #8BB903; text-decoration: none;}
-a:hover { color: #B0DD28;}
+a { color: #F2583E; text-decoration: none;}
+a:hover { text-decoration: underline; }
 
 h1 {
     margin-bottom: 0px;
@@ -27,13 +27,13 @@ h1 {
 #header {
 	width: 940px;
 	margin: 0 auto;
-	background-color: #FFFFFF;
+	background-color: #FFF;
 	padding: 10px;
 	overflow: auto;
 }
 
 #header h2 {
-	font-size: 25px;
+	font-size: 20px;
 	margin-top: 5px;
     margin-bottom: 0px;
     color: #7a7a7a;
@@ -94,6 +94,8 @@ h1 {
 #header .logo {
 	float: left;
 	margin-top: 15px;
+    width: 325px;
+    text-align: center;
 }
 
 #header .user_login a {
@@ -114,10 +116,10 @@ h1 {
 ----------------------------------------------- */
 
 #menu {
-	border-top: 8px solid #83A21F;
+	border-top: 8px solid #F2583E;
 	width: 940px;
 	margin: 0 auto;
-	background-color: #B6B652;
+	background-color: #77BED2;
 	padding: 10px;
 	overflow: auto;
 }
@@ -139,15 +141,15 @@ h1 {
 }
 
 #menu .navigation a.active {
-	background-color: #83A21F;
+	background-color: #F2583E;
 }
 
 #menu .navigation a.active:hover {
-	background-color: #83A21F;
+	background-color: #F2583E;
 }
 
 #menu .navigation a:hover {
-	background-color: #83A21F;
+	background-color: #F2583E;
 }
 
 #menu .sharing {
@@ -186,10 +188,11 @@ h1 {
 
 #content {
 
-	border-bottom: 8px solid #835E41;
+	border-bottom: 8px solid #F2583E;
+    border-top: 8px solid #D5E1DD;
 	width: 940px;
 	margin: 0 auto;
-	background-color: #FFF;
+	background-color: #F7F3E8;
 	padding: 10px;
 	overflow: auto;
 }
@@ -234,7 +237,7 @@ h1 {
 }
 
 #content .gallery td .name {
-	font-size: 11px;
+	font-size: 10px;
 }
 
 
@@ -267,7 +270,7 @@ h1 {
 ----------------------------------------------- */
 #footer {
 	clear: both;
-	color:#333333;
+	color: #FFF;
 	padding-bottom: 30px;
 	padding-top: 10px;
 	margin-top: 30px;

@@ -139,7 +139,7 @@
 				$error = $this->entries->insert();
 				
 				if ($error == "OK") {
-					$this->session->set_flashdata('success', "Your picture has been uploaded successfully");
+					$this->session->set_flashdata('success', "Tu foto ha sido guardada satisfactoriamente");
 					redirect('//main', 'location');
 				}
 				else

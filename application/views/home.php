@@ -26,11 +26,7 @@
 					<? foreach($model as $toilet): ?>
 						<? $i++; ?>
 						<td valign="top" class="toilet">
-							<div class="json_encoded" id="toilet<?=$toilet->id?>"><?= json_encode($toilet); ?></div>
-						
-							<div class="location"><?= $toilet->location ?></div>
-							
-
+					
 							<span class="thumbnail">
 								<?= anchor("//toilet/" . $toilet->id, img("public/toilets/small/". $toilet->image .".jpg")); ?>
 								
@@ -42,8 +38,9 @@
 								</span>
 							</span>
 
+							<div class="location"><?= $toilet->title ?></div>
 							<div class="name">
-								by: <i><?= $toilet->name ?></i>
+								por: <i><?= $toilet->name ?></i>
 							</div>
 							
 						</td>
