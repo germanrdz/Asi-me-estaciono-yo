@@ -177,6 +177,10 @@ h1 {
     margin-right: 5px;
 }
 
+#menu #fb_logout { 
+    cursor: pointer;
+}
+
 /* content
 ----------------------------------------------- */
 

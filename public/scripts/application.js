@@ -37,13 +37,11 @@ var Application = {
 			}
 		});		
 		
-		// attach a submit handler to the form
-		/*
-		upload_form.submit(function(event) {
-			event.preventDefault(); 
-			Application.doUpload(this);
+		$("#fb_logout").click(function() {
+			FB.logout(function(response) {
+				window.location.reload(true);
+			})
 		});
-		*/
 
 	},
 	

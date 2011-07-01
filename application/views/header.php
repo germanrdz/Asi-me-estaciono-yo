@@ -50,7 +50,7 @@
                     <? else: ?>
 					    <a href="javascript:;"><img class="picture" src="http://graph.facebook.com/<?= $user->id ?>/picture?type=square" height="20" align="left"/> </a>
 					    <?= $user->name ?>
-					<?= anchor("logout", "(cerrar sesion)"); ?>
+					<a id="fb_logout">(cerrar sesion)</a>
 					<? endif; ?>
 					</div>
 		
