@@ -55,12 +55,11 @@
 					</div>
 		
 			<div class="sharing">
-				<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.thetoiletproject.com/" data-text="where are the toilets join togheter for the world! upload your toilet picture now!" data-count="horizontal" data-via="GerManson">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-				<iframe src="http://www.facebook.com/plugins/like.php?href=htp%3A%2F%2Fwww.thetoiletproject.com&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+				<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.asimeestacionoyo.com/" data-text="Has visto a alguien mal estacionado? Tomales una foto! Reportalos en AsiMeEstacionoYo.com! Sube tu imagen ya!" data-count="horizontal" data-via="GerManson">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+				<iframe src="http://www.facebook.com/plugins/like.php?href=htp%3A%2F%2Fwww.asimeestacionoyo.com&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
 			</div>
 		
 		</div>
-
 
 		<div id="header" />
 			<div class="wrapper">
@@ -71,16 +70,17 @@
 				<div id="upload">
 					<h2>Has visto a alguien mal estacionado? Sube tu imagen ya!</h2>
 					
+                    <? if ($user): ?>
 					<?= form_open_multipart("main"); ?>
 					
-						<div class="fields">
-							<?= form_input("name", "Titulo de la foto", 'class="overlay" id="name"'); ?> 
-							<?= form_input("location", "Lugar donde fue tomada", 'class="overlay" id="location"'); ?> 
+					<div class="fields">
+					    <?= form_input("name", "Titulo de la foto", 'class="overlay" id="name"'); ?> 
+					    <?= form_input("location", "Lugar donde fue tomada", 'class="overlay" id="location"'); ?> 
 							
-							<div class="toilet_upload">
-								<span>Imagen:</span>
-								<?= form_upload("toilet", "", 'class="toilet overlay"'); ?>
-							</div>
+						<div class="toilet_upload">
+                            <span>Imagen:</span>
+						    <?= form_upload("toilet", "", 'class="toilet overlay"'); ?>
+						</div>
                     </div>
 					
                     <a href="javascript:;" id="submit">
@@ -88,6 +88,10 @@
                     </a>
 						
 					<?= form_close(); ?>
+                    <? else: ?>
+                    <p>Inicia sesion para poder subir fotos, Es muy facil!</p>
+                    <p><fb:login-button>Login with Facebook</fb:login-button></p>
+                    <? endif; ?>
 				</div>
 			
 			</div> <!-- wrapper -->
@@ -106,4 +110,3 @@
 				</div>
 			<? endif; ?>
 		</div>
-                   

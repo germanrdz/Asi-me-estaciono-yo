@@ -28,16 +28,26 @@
 			$include["scripts"] = array();
 			$include["active_page"] = "top";
 			
-			$this->load->view('header', $include);
-            
+			
             $cookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
             $user = $this->facebook->getCurrentUser($cookie);
             
 			// bussines logic 
 			$view_data['model'] = $this->entries->top(100);
 
+            $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET); 
+            if ($fbcookie) {
+                $user = $this->facebook->getCurrentUser($fbcookie);
+            }
+            else {
+                $user = array();
+            }
+            
+            $include["user"] = $user;
+
 			// load view
-			$this->load->view('random', $view_data);
+            $this->load->view('header', $include);
+            $this->load->view('random', $view_data);
 		
 			// load footer
 			$this->load->view('footer');
@@ -48,14 +58,23 @@
 			// load main header
 			$include["stylesheets"] = array();
 			$include["scripts"] = array();
-			$include["active_page"] = "random";
-			
-			$this->load->view('header', $include);
+			$include["active_page"] = "random";	
 			
 			// bussines logic 
 			$view_data['model'] = $this->entries->random(100);	
+
+            $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET); 
+            if ($fbcookie) {
+                $user = $this->facebook->getCurrentUser($fbcookie);
+            }
+            else {
+                $user = array();
+            }
 			
+            $include["user"] = $user;
+
 			// load view
+            $this->load->view('header', $include);
 			$this->load->view('random', $view_data);
 		
 			// load footer
@@ -87,6 +106,18 @@
 				{
 					$include["title"] = "NOT FOUND";
 				}
+
+                $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
+
+                if ($fbcookie) {
+                    $user = $this->facebook->getCurrentUser($fbcookie);
+                }
+                else {
+                    $user = array();
+                }
+
+                $include["user"] = $user;
+            
 				
 				// load views
 				$this->load->view('header', $include);
@@ -119,7 +150,7 @@
 			}
 
             $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
-			
+            
 			if ($fbcookie) {
 				$user = $this->facebook->getCurrentUser($fbcookie);
 			}
