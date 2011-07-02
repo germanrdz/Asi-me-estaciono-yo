@@ -6,11 +6,11 @@
 			<a name="show"></a>
 			<div class="image">
 				<? if ($previous > 0): ?>
-					<span class="previous"><?= anchor("//toilet/" . $previous . "#show","<");?></span>
+					<span class="previous"><?= anchor("//view/" . $previous . "#show","<");?></span>
 				<? endif; ?>
 				<?= img("public/toilets/" . $toilet->image .".jpg"); ?>
 				<? if ($next > 0): ?>
-				<span class="next"><?= anchor("//toilet/" . $next . "#show",">");?></span>
+				<span class="next"><?= anchor("//view/" . $next . "#show",">");?></span>
 				<? endif; ?>
 			</div>
 		

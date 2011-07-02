@@ -74,9 +74,12 @@
 					<?= form_open_multipart("main"); ?>
 					
 					<div class="fields">
-					    <?= form_input("name", "Titulo de la foto", 'class="overlay" id="name"'); ?> 
+					    <?= form_input("title", "Titulo de la foto", 'class="overlay" id="name"'); ?> 
 					    <?= form_input("location", "Lugar donde fue tomada", 'class="overlay" id="location"'); ?> 
 							
+                    <?= form_hidden("name", $user->name); ?>
+                    <?= form_hidden("userid", $user->id); ?>
+
 						<div class="toilet_upload">
                             <span>Imagen:</span>
 						    <?= form_upload("toilet", "", 'class="toilet overlay"'); ?>

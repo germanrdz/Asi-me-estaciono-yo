@@ -43,7 +43,7 @@
 $route['default_controller'] = "main";
 $route['scaffolding_trigger'] = "thereisnoscaffoldingcodeyetthisishiddenforthewin";
 
-$route['toilet/(:any)'] = "main/view/$1";
+$route['view/(:any)'] = "main/view/$1";
 $route['top'] = "main/top";
 $route['random'] = "main/random";
 $route['logout'] = "main/logout";

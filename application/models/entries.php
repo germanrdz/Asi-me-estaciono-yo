@@ -223,7 +223,7 @@ class entries extends Model {
 		}
 		
 		if ($this->input->post("title") == "" || $this->input->post("title") == "Titulo de la foto") {
-			return "<p>Olvidarte ponerle un titulo a la foto</p>";
+			return "<p>Olvidaste ponerle un titulo a la foto</p>";
 		}
 		
 		if ($this->input->post("location") == "" || $this->input->post("location") == "Lugar donde fue tomada") {
