@@ -1,43 +1,50 @@
+var View = {
 
-var Toilet = {
+    link_next: undefined,
+    link_previous: undefined,
 
 	init: function() {
 		var voteup			= $("#voteup");
 		var votedown		= $("#votedown");
 
+        this.link_next = $("#toilet .next a"); 
+        this.link_previous = $("#toilet .previous a");
+
 		$(document).keydown(function(e){
 			if (e.keyCode == 37) { 
-			   Toilet.showPrevious();
+			   View.showPrevious();
 			}
 			
 			if (e.keyCode == 39) { 
-				Toilet.showNext();
+				View.showNext();
 			}
 		});
 		
 		voteup.click(function(){
-			Toilet.voteUp(this);
+			View.voteUp(this);
 		});
 		
 		votedown.click(function(){
-			Toilet.voteDown(this);
+			View.voteDown(this);
 		});
 	},
 	
 	showNext: function() {
-		var link = $("#toilet .next a");
-		window.location.href = link.attr("href");
+        if (this.link_next.size() > 0) {
+		    window.location.href = View.link_next.attr("href");
+        }
 	},
 	
 	showPrevious: function() {
-		var link = $("#toilet .previous a");
-		window.location.href = link.attr("href");
+        if (this.link_previous.size() > 0) {
+		    window.location.href = View.link_previous.attr("href");
+        }
 	},
 	
 	voteUp: function(e) {
 		var url = $(e).attr("href");
 		var count = $("#votescount");
-		var votedown		= $("#votedown");
+		var votedown = $("#votedown");
 		
 		$.ajax({
 			url: url,
@@ -65,6 +72,6 @@ var Toilet = {
 }
 
 $(document).ready(function(){
-	Toilet.init();
+	View.init();
 });
 
