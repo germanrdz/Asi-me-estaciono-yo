@@ -22,12 +22,12 @@
 	function time_since($original) {
 		// array of time period chunks
 		$chunks = array(
-			array(60 * 60 * 24 * 365 , 'year'),
-			array(60 * 60 * 24 * 30 , 'month'),
-			array(60 * 60 * 24 * 7, 'week'),
-			array(60 * 60 * 24 , 'day'),
-			array(60 * 60 , 'hour'),
-			array(60 , 'minute'),
+			array(60 * 60 * 24 * 365 , 'año'),
+			array(60 * 60 * 24 * 30 , 'mes'),
+			array(60 * 60 * 24 * 7, 'semana'),
+			array(60 * 60 * 24 , 'dia'),
+			array(60 * 60 , 'hora'),
+			array(60 , 'minuto'),
 		);
 		
 		$today = time(); /* Current unix time  */
@@ -46,8 +46,13 @@
 			}
 		}
 		
-		$print = ($count == 1) ? "1 ". $name : "$count {$name}s";
-		
+        if ($name == "mes") {
+            $print = ($count ==1) ? "1 ". $name : "$count {$name}es";
+        }
+        else {    
+            $print = ($count == 1) ? "1 ". $name : "$count {$name}s";
+        }
+
 		if ($i + 1 < $j) {
 			// now getting the second item
 			$seconds2 = $chunks[$i + 1][0];

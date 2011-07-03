@@ -1,8 +1,5 @@
 		<div id="content">
-			<div class="quote">
-				<? img("public/images/toiletQuote.png"); ?>
-			</div>
-			
+						
 			<div id="view_window"></div>
 			
 			<div id="ads">
@@ -25,10 +22,10 @@
 					<? $i = 0 ?>
 					<? foreach($model as $image): ?>
 						<? $i++; ?>
-						<td valign="top" class="toilet">
+						<td valign="top">
 					
 							<span class="thumbnail">
-								<?= anchor("//view/" . $image->id, img("public/toilets/small/". $image->image .".jpg")); ?>
+								<?= anchor("//view/" . $image->id, img("public/uploaded/small/". $image->image .".jpg")); ?>
 								
 								<? if ($image->votes >= 0): ?>
 									<span class="votes green">+<?= $image->votes ?></span>
@@ -38,7 +35,7 @@
 								</span>
 							</span>
 
-							<div class="location"><?= $image->title ?></div>
+							<div class="title"><?= $image->title ?></div>
 							<div class="name">
                                por: <i><?= anchor("http://www.facebook.com/profile.php?id=" . $image->userid, $image->name); ?></i>
 							</div>
@@ -53,13 +50,6 @@
 					</tr>
 				</table>
 				
-				<!--
-				<div class="loadmore">
-					<a href="javascript:;">
-					<?= img("public/images/more.png"); ?>
-					</a>
-				</div>
-				-->
 			</div>
 			
 		</div> <!-- content -->

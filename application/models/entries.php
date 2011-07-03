@@ -214,7 +214,7 @@ class entries extends Model {
 	
 		$this->load->library('image_lib');
 
-		$file = $_FILES["toilet"];
+		$file = $_FILES["image"];
 
 		// validate
 		if ($file["name"] == "")
@@ -238,7 +238,7 @@ class entries extends Model {
 		$config['maintain_ratio'] = TRUE;
 		$config['width'] = 800;
 		$config['height'] = 500;
-		$config['new_image'] = "public/toilets/" . $preview . ".jpg";
+		$config['new_image'] = "public/uploaded/" . $preview . ".jpg";
 		$config['thumb_marker'] = '';
 		
 		$this->image_lib->clear();
@@ -251,7 +251,7 @@ class entries extends Model {
 
 		$config['width'] = 120;
 		$config['height'] = 120;
-		$config['new_image'] = "public/toilets/small/" . $preview . ".jpg";
+		$config['new_image'] = "public/uploaded/small/" . $preview . ".jpg";
 
 		$this->image_lib->clear();
 		$this->image_lib->initialize($config);

@@ -4,23 +4,22 @@
 				<table>
 					<tr>
 					<? $i = 0 ?>
-					<? foreach($model as $toilet): ?>
+					<? foreach($model as $image): ?>
 						<? $i++; ?>
-						<td valign="top" class="toilet">
-							<div class="location"><?= $toilet->location ?></div>
+						<td valign="top">
 							<span class="thumbnail">
-								<?= anchor("//toilet/" . $toilet->id, img("public/toilets/small/". $toilet->image .".jpg")); ?>
-								
-								<? if ($toilet->votes >= 0): ?>
-									<span class="votes green">+<?= $toilet->votes ?></span>
+								<?= anchor("//view/" . $image->id, img("public/toilets/small/". $image->image .".jpg")); ?>
+								<? if ($image->votes >= 0): ?>
+									<span class="votes green">+<?= $image->votes ?></span>
 								<? else: ?>
-									<span class="votes red"><?= $toilet->votes ?></span>
+									<span class="votes red"><?= $image->votes ?></span>
 								<? endif; ?>
 								</span>
 							</span>
-
+                            
+                            <div class="title"><?= $image->title ?></div>
 							<div class="name">
-								by: <i><?= $toilet->name ?></i>
+								por: <i><?= anchor("http://www.facebook.com/profile.php?id=" . $image->userid, $image->name); ?></i>
 							</div>
 							
 

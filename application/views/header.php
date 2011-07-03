@@ -7,7 +7,7 @@
 		
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
 		<meta name="robots" content="all" /> 
-		<meta name="description" content="Where all the toilets join together for the world, upload your picture now and be part of the revolution">
+		<meta name="description" content="Asi me estaciono yo! y que | Sube tus fotos de gente mal estacionada">
 
 		<?= link_tag("public/stylesheets/master.css"); ?>
 
@@ -31,6 +31,7 @@
 		
 		<!-- Google Analytics -->
 		<!-- End Google Analytics -->
+
 	</head>
 
 	<body>
@@ -80,9 +81,9 @@
                     <?= form_hidden("name", $user->name); ?>
                     <?= form_hidden("userid", $user->id); ?>
 
-						<div class="toilet_upload">
+						<div class="image_upload">
                             <span>Imagen:</span>
-						    <?= form_upload("toilet", "", 'class="toilet overlay"'); ?>
+						    <?= form_upload("image", "", 'class="overlay"'); ?>
 						</div>
                     </div>
 					

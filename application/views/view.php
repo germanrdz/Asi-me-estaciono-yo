@@ -8,18 +8,18 @@
 				<? if ($previous > 0): ?>
 					<span class="previous"><?= anchor("//view/" . $previous . "#show","<");?></span>
 				<? endif; ?>
-				<?= img("public/toilets/" . $toilet->image .".jpg"); ?>
+				<?= img("public/uploaded/" . $toilet->image .".jpg"); ?>
 				<? if ($next > 0): ?>
 				<span class="next"><?= anchor("//view/" . $next . "#show",">");?></span>
 				<? endif; ?>
 			</div>
 		
-			<div class="toiletinfo">.
+			<div class="toiletinfo">
 			
 				<div class="uploaded">
-					<span class="location"><?= $toilet->location; ?></span><br />
-					<span class="name"><?= time_since($toilet->created) ?> ago<br />
-					by: <?= $toilet->name; ?></span>
+					<span class="location"><?= $toilet->title; ?></span><br />
+					<span class="name">en <?= $toilet->location ?> hace <?= time_since($toilet->created) ?><br />
+     por: <?= anchor("http://www.facebook.com/profile.php?id=" . $toilet->userid, $toilet->name); ?></span>
 				</div>
 		
 				<div class="votes">

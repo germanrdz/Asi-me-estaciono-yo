@@ -27,8 +27,7 @@
 			$include["stylesheets"] = array();
 			$include["scripts"] = array();
 			$include["active_page"] = "top";
-			
-			
+						
             $cookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
             $user = $this->facebook->getCurrentUser($cookie);
             
@@ -44,6 +43,7 @@
             }
             
             $include["user"] = $user;
+            $include["title"] = "Mejor votadas";
 
 			// load view
             $this->load->view('header', $include);
@@ -89,7 +89,7 @@
 			
 				// load main header
 				$include["stylesheets"] = array('view');
-				$include["scripts"] = array("toilet");
+				$include["scripts"] = array("view");
 				$include["active_page"] = "view";
 				
 				
@@ -100,7 +100,7 @@
 				
 				if (count($view_data["model"]) > 0) 
 				{
-					$include["title"] = $view_data["model"][0]->location;
+					$include["title"] = $view_data["model"][0]->title;
 				}
 				else
 				{

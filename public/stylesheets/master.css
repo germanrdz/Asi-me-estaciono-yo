@@ -63,20 +63,20 @@ h1 {
 	width: 225px;
 }
 
-#header #upload .toilet_upload {
+#header #upload .image_upload {
 	font-size: 16px;
 	margin-top: 8px;
 	overflow: hidden;
 	width: 500px;
 }
 
-#header #upload .toilet_upload span {
+#header #upload .image_upload span {
 	float: left;
 	margin-top: 5px;
 	margin-right: 10px;
 }
 
-#header #upload .toilet_upload input.toilet {
+#header #upload .image_upload input.toilet {
 	float: left;
 	width: 100px;
 	font-size: 12px;
@@ -231,7 +231,7 @@ h1 {
 	border: 1px solid white;
 }
 
-#content .gallery td .location {
+#content .gallery td .title {
 	font-weight: bold;
 	text-align: center;
 }
@@ -249,10 +249,6 @@ h1 {
 	background-color: #b70e01;
 }
 
-
-#content .gallery td .json_encoded {
-	display: none;
-}
 
 #content .loadmore {
 	margin: 0 auto;
