@@ -3,7 +3,7 @@
 	<head> 
 		<base href="<?= base_url() ?>" />
 		
-		<link REL="SHORTCUT ICON" HREF="public/toiletfav.ico">
+		<!-- <link REL="SHORTCUT ICON" HREF="public/toiletfav.ico"> -->
 		
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
 		<meta name="robots" content="all" /> 
