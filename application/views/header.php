@@ -69,7 +69,7 @@ _gaq.push(['_trackPageview']);
 					</div>
 		
 			<div class="sharing">
-				<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.asimeestacionoyo.com/" data-text="Has visto a alguien mal estacionado? Tomales una foto! Reportalos en AsiMeEstacionoYo.com! Sube tu imagen ya!" data-count="horizontal" data-via="GerManson">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+				<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.asimeestacionoyo.com/" data-text="Has visto a alguien mal estacionado? Tomales una foto! Reportalos en AsiMeEstacionoYo.com!" data-count="horizontal" data-via="GerManson">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 				<iframe src="http://www.facebook.com/plugins/like.php?href=htp%3A%2F%2Fwww.asimeestacionoyo.com&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
 			</div>
 		
