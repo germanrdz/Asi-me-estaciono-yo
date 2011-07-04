@@ -1,16 +1,28 @@
 <div id="content">
+     <a name="show"></a>
+
+     <div id="ads">
+     <script type="text/javascript"><!--
+     google_ad_client = "ca-pub-3191102604317181";
+     /* Asi Me Estaciono Yo */
+     google_ad_slot = "6319234176";
+     google_ad_width = 728;
+     google_ad_height = 90;
+     //-->
+     </script>
+     <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+     </div>
 
 	<? foreach($model as $toilet): ?>
 		<div id="toilet">
-		
-			<a name="show"></a>
+
 			<div class="image">
 				<? if ($previous > 0): ?>
 					<span class="previous"><?= anchor("//view/" . $previous . "#show","<");?></span>
 				<? endif; ?>
 				<?= img("public/uploaded/" . $toilet->image .".jpg"); ?>
 				<? if ($next > 0): ?>
-				<span class="next"><?= anchor("//view/" . $next . "#show",">");?></span>
+                    <span class="next"><?= anchor("//view/" . $next . "#show",">");?></span>
 				<? endif; ?>
 			</div>
 		

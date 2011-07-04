@@ -28,13 +28,11 @@
 			$include["scripts"] = array();
 			$include["active_page"] = "top";
 						
-            $cookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
-            $user = $this->facebook->getCurrentUser($cookie);
-            
 			// bussines logic 
 			$view_data['model'] = $this->entries->top(100);
 
             $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET); 
+
             if ($fbcookie) {
                 $user = $this->facebook->getCurrentUser($fbcookie);
             }

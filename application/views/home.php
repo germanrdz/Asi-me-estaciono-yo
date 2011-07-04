@@ -1,25 +1,21 @@
 		<div id="content">
+             <div id="ads">
+             <script type="text/javascript">
+             <!--
+             google_ad_client = "ca-pub-3191102604317181";
+             google_ad_slot = "6319234176";
+             google_ad_width = 728;
+             google_ad_height = 90;
+             //-->
+             </script>
+             <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+             </div>
 						
-			<div id="view_window"></div>
-			
-			<div id="ads">
-				<script type="text/javascript"><!--
-				google_ad_client = "ca-pub-3191102604317181";
-				/* The Toilet Project */
-				google_ad_slot = "2705922976";
-				google_ad_width = 120;
-				google_ad_height = 600;
-				//-->
-				</script>
-				<script type="text/javascript"
-				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-				</script>			
-			</div>
-			
 			<div class="gallery">
 				<table>
 					<tr>
-					<? $i = 0 ?>
+                    <? $i = 0; ?>
+
 					<? foreach($model as $image): ?>
 						<? $i++; ?>
 						<td valign="top">
@@ -42,10 +38,10 @@
 							
 						</td>
 						
-						<? if (($i % 6) == 0): ?>
-							</tr><tr>
-						<? endif; ?>
-						
+						<? if (($i % 7) == 0): ?>
+							</tr><tr>						    
+                        <? endif; ?>
+
 					<? endforeach; ?>
 					</tr>
 				</table>
