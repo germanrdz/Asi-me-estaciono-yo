@@ -8,7 +8,7 @@
       <!-- FACEBOOK API -->
       <div id="fb-root"></div>
       <script src="http://connect.facebook.net/en_US/all.js"></script>
-      <script>
+      <script type="text/javascript">
          FB.init({ 
             appId:'133512650062074', cookie:true, 
             status:true, xfbml:true 
