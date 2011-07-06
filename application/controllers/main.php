@@ -70,6 +70,7 @@
             }
 			
             $include["user"] = $user;
+            $include["title"] = "100 Aleatorias";
 
 			// load view
             $this->load->view('header', $include);
