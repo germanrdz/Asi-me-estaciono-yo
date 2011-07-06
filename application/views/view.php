@@ -58,9 +58,7 @@
 			<div class="comments">
 				<?
 					$url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-				?>				
-			     <div id="fb-root"></div>
-			     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+				?>
 			     <fb:comments href="<?= $url; ?>" num_posts="15" width="700"></fb:comments>
 			</div>
 

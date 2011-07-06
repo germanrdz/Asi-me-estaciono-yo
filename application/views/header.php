@@ -18,8 +18,6 @@
 		<script src="public/scripts/jquery.js" type="text/javascript" charset="utf-8" ></script>
 		<script src="public/scripts/jquery-dom.js" type="text/javascript" charset="utf-8" ></script>
 		<script src="public/scripts/application.js" type="text/javascript" charset="utf-8" ></script>
-
-        <script src="http://connect.facebook.net/en_US/all.js"></script>
 		
 		<? foreach($scripts as $file): ?>
 		<script src="public/scripts/<?= $file ?>.js" type="text/javascript" charset="utf-8"></script>
