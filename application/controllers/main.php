@@ -205,6 +205,22 @@
 		}
 	
 
+        function iphoneUpload()
+        {
+
+            if ($_POST) {
+                echo "post received <br />";
+                echo "<pre>";
+                print_r($_POST);
+                echo "</pre>";
+                die();
+            }
+            else {
+                redirect('/', 'refresh');
+            }
+
+        }
+
 	}
 
 ?>

@@ -47,6 +47,7 @@ $route['view/(:any)'] = "main/view/$1";
 $route['top'] = "main/top";
 $route['random'] = "main/random";
 $route['logout'] = "main/logout";
+$route['iphoneupload'] = "main/iphoneupload";
 
 /* End of file routes.php */
 /* Location: ./system/application/config/routes.php */
