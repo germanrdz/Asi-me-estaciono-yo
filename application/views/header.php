@@ -83,7 +83,6 @@ _gaq.push(['_trackPageview']);
 					
                     <? if ($user): ?>
 					<?= form_open_multipart("main"); ?>
-					
 					<div class="fields">
 					    <?= form_input("title", "Titulo de la foto", 'class="overlay" id="name"'); ?> 
 					    <?= form_input("location", "Lugar donde fue tomada", 'class="overlay" id="location"'); ?> 
@@ -100,8 +99,7 @@ _gaq.push(['_trackPageview']);
                     <?= img("/public/images/upload.jpg"); ?>
                     </a>
 
-                    </div>
-											
+                    </div>											
 					<?= form_close(); ?>
                     <? else: ?>
                     <p>Inicia sesion para poder subir fotos, Es muy facil!</p>

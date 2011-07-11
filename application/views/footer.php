@@ -15,12 +15,10 @@
          });
          
          FB.Event.subscribe('auth.login', function(response) {
-                 window.location.reload();
-                 //Application.loggedHeader();
+                 //window.location.reload();
+                 Application.loggedHeader(response);
          });
       </script>
-
-
 		
 	</body>
 </html>

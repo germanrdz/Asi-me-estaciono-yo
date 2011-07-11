@@ -45,8 +45,28 @@ var Application = {
 
 	},
 
-    loggedHeader: function() {
+    loggedHeader: function(response) {
+
+        debugger;
+
+        var upload_form = $.FORM({ action: "main" }, 
+                                 $.DIV({ className: "fields" }, 
+                                       $.INPUT({ name: "title", title: "Titulo de la foto", className: "overlay", id: "name" }),
+                                       $.INPUT({ name: "location", title: "Lugar donde fue tomada", className: "overlay", id: "location" }),
+                                       
+                                       $.INPUT({ type: "hidden" }, ""),
+                                       $.INPUT({ type: "hidden" }, 0),
+
+                                       $.DIV({ className: "image_upload" },
+                                             $.SPAN({}, $.INPUT({ type: "file", name: "image", className: "overlay"})),
+                                            ),
+                                       
+                                       $.A({ href: "javascript:;", id: "submit" }, $.IMG({ src="/public/images/upload.jph" })),
+                                      ),
+                                );
         
+        $("#upload").append(upload_form);
+                                             
     }
 
 };
