@@ -13,9 +13,11 @@
             appId:'133512650062074', cookie:true, 
             status:true, xfbml:true 
          });
+         
          FB.Event.subscribe('auth.login', function(response) {
-			window.location.reload();
-		 });
+                 window.location.reload();
+                 //Application.loggedHeader();
+         });
       </script>
 
 

@@ -16,11 +16,12 @@
             $this->load->library('facebook');
 
 			date_default_timezone_set('America/Hermosillo');
-			
-			define('FACEBOOK_APP_ID', '133512650062074');
-			define('FACEBOOK_SECRET', '98dc67b994a453e68788a501c36612be');
 
-		}
+            $this->config->load('facebook');			
+			
+            define('FACEBOOK_APP_ID', $this->config->item("facebook_appid"));
+			define('FACEBOOK_SECRET', $this->config->item("facebook_secret"));
+        }
 		
 		function top() {
 			// load main header
@@ -207,6 +208,9 @@
 
         function iphoneUpload()
         {
+
+            
+
 
             if ($_POST) {
                 echo "post received <br />";
