@@ -208,10 +208,6 @@
 
         function iphoneUpload()
         {
-
-            
-
-
             if ($_POST) {
                 echo "post received <br />";
                 echo "<pre>";

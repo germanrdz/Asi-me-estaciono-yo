@@ -37,11 +37,11 @@ _gaq.push(['_trackPageview']);
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+})();
 
 </script>
 
-		<!-- End Google Analytics -->
+	<!-- End Google Analytics -->
 	</head>
 
 	<body>
@@ -61,7 +61,7 @@ _gaq.push(['_trackPageview']);
                     <? else: ?>
 					    <a href="javascript:;"><img class="picture" src="http://graph.facebook.com/<?= $user->id ?>/picture?type=square" height="20" align="left"/> </a>
 					    <?= $user->name ?>
-					<a id="fb_logout">(cerrar sesion)</a>
+					    <a id="fb_logout">(cerrar sesion)</a>
 					<? endif; ?>
 					</div>
 		
@@ -81,6 +81,8 @@ _gaq.push(['_trackPageview']);
 				<div id="upload">
 					<h2>Has visto a alguien mal estacionado? Sube tu imagen ya!</h2>
 					
+                    <div class="content">
+
                     <? if ($user): ?>
 					<?= form_open_multipart("main"); ?>
 					<div class="fields">
@@ -105,6 +107,7 @@ _gaq.push(['_trackPageview']);
                     <p>Inicia sesion para poder subir fotos, Es muy facil!</p>
                     <p><fb:login-button>Login with Facebook</fb:login-button></p>
                     <? endif; ?>
+                    </div>
 				</div>
 			
 			</div> <!-- wrapper -->

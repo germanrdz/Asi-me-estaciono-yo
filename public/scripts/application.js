@@ -47,26 +47,47 @@ var Application = {
 
     loggedHeader: function(response) {
 
-        debugger;
 
-        var upload_form = $.FORM({ action: "main" }, 
+        var username = "Anonymous";
+        var query = FB.Data.query('select name, uid from user where uid={0}', response.session.uid);
+        
+        query.wait(function(rows) {
+            $("#username").html(rows[0].name + " ");
+            $("#username_input").val(rows[0].name);
+        });        
+        
+        //debugger;
+
+        var upload_form = $.FORM({ action: "main", method: "post", enctype: "multipart/form-data" }, 
                                  $.DIV({ className: "fields" }, 
-                                       $.INPUT({ name: "title", title: "Titulo de la foto", className: "overlay", id: "name" }),
-                                       $.INPUT({ name: "location", title: "Lugar donde fue tomada", className: "overlay", id: "location" }),
+                                       $.INPUT({ name: "title", value: "Titulo de la foto", className: "overlay", id: "name" }),
+                                       $.INPUT({ name: "location", value: "Lugar donde fue tomada", className: "overlay", id: "location" }),
                                        
-                                       $.INPUT({ type: "hidden" }, ""),
-                                       $.INPUT({ type: "hidden" }, 0),
+                                       $.INPUT({ type: "hidden", value: response.session.uid}),
+                                       $.INPUT({ type: "hidden", id: "username_input" }),
 
                                        $.DIV({ className: "image_upload" },
-                                             $.SPAN({}, $.INPUT({ type: "file", name: "image", className: "overlay"})),
+                                             $.SPAN({}, 
+                                                    $.INPUT({ type: "file", name: "image", className: "overlay"})
+                                                   )
                                             ),
                                        
-                                       $.A({ href: "javascript:;", id: "submit" }, $.IMG({ src="/public/images/upload.jph" })),
-                                      ),
+                                       $.A({ href: "javascript:;", id: "submit" }, $.IMG({ src:"public/images/upload.jpg" }))
+                                      )
                                 );
+         
+        var logged_header = $.SPAN({},
+                                   $.A({ href: "javascript:;" },
+                                       $.IMG({ src: "http://graph.facebook.com/" + response.session.uid + "/picture?type=square", className: "picture", height: "20", align: "left" })
+                                      ),
+                                   $.SPAN({ id:"username" }, "Cargando... "),
+                                   $.A({ id: "fb_logout" }, "(cerrar sesion)")
+                                  );
         
-        $("#upload").append(upload_form);
-                                             
+        $("#login").html("").append(logged_header);
+        $("#upload .content").html("").append(upload_form);
+        
+        Application.init();
     }
 
 };
