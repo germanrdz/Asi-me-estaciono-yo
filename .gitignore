@@ -2,3 +2,4 @@
 .htaccess
 config.php
 database.php
+application/config/facebook.php
