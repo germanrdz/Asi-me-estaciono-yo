@@ -198,9 +198,33 @@ h1 {
 	overflow: auto;
 }
 
-#content .quote {
-	margin: 0 auto;
-	text-align: center;
+#content h3 { text-align: center; margin-bottom: 10px; }
+
+#content .right { float: right; padding: 10px; padding-top: 0px; width: 245px }
+#content .right ul { list-style-type: none; margin-top: 0px; background-color: #FFF; padding: 5px; }
+#content .right li { overflow: auto; padding: 3px; }
+#content .right li img { height: 40px; margin-right: 5px; border: 1px solid silver; }
+#content .right li .name {  }
+#content .right li .count { font-size: 11px; }
+#content .right li .avatar { position: relative; float: left; }
+#content .right li .votes {
+    padding: 4px;
+	color: #FFF;
+	width: auto;
+	font-size: 10px;
+	font-weight: bold;
+	
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+
+    background-color: #77BED2; 
+}
+#content .right li:hover { background-color: #F2583E; }
+#content .right li:hover a { color: #FFF; }
+
+#content .gallery { 
+    float: left;
 }
 
 #content .gallery table {
@@ -228,8 +252,7 @@ h1 {
 	
 	position: absolute;
 	bottom: 0;
-	right: 0;git
-	border: 1px solid white;
+	right: 0;
 }
 
 #content .gallery td .title {

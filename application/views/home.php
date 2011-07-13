@@ -12,6 +12,7 @@
              </div>
 						
 			<div class="gallery">
+                <h3> Imagenes Agregadas Recientemente </h3>
 				<table>
 					<tr>
                     <? $i = 0; ?>
@@ -31,14 +32,14 @@
 								</span>
 							</span>
 
-							<div class="title"><?= $image->title ?></div>
+                            <div class="title"><?= $image->title; ?></div>
 							<div class="name">
                                por: <i><?= anchor("http://www.facebook.com/profile.php?id=" . $image->userid, $image->name); ?></i>
 							</div>
 							
 						</td>
 						
-						<? if (($i % 7) == 0): ?>
+						<? if (($i % 5) == 0): ?>
 							</tr><tr>						    
                         <? endif; ?>
 
@@ -47,5 +48,25 @@
 				</table>
 				
 			</div>
+
+            <div class="right">
+                <h3>Top de Contribuidores</h3>
+                <ul>
+                 <? $i = 0; ?>
+                 <? foreach($top_contributors as $top): ?>
+                 <? $i++; ?>
+                 <li>
+                 <span class="avatar">
+                 <img class="picture" src="http://graph.facebook.com/<?= $top->userid ?>/picture?type=square" />
+                 <span class="votes green"><?= $i ?></span>                 
+                 </span>
+                 <span class="name">
+                 <?= anchor("http://www.facebook.com/profile.php?id=" . $top->userid, $top->name) ?></span><br />
+                 <span class="count"><b><?= $top->count?></b> imagenes</span>
+                 </li>
+                 
+                 <? endforeach; ?>
+                </ul>
+            </div>
 			
 		</div> <!-- content -->

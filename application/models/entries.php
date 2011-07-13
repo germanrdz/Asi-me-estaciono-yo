@@ -95,6 +95,32 @@ class entries extends Model {
 		
 		return 0;		
 	}
+
+    function getTopContributors($limit) {
+        $data = array();
+
+        $this->db->select("name, userid, count(*) as count");
+        $this->db->order_by("count", "DESC");
+        $this->db->group_by("name");
+        $query = $this->db->get('entries', $limit);
+
+        /* SELECT name, count(*) as count */
+        /* FROM entries  */
+        /* GROUP BY name */
+        /* ORDER BY count DESC */
+
+		if ($query->num_rows() > 0)
+		{
+			foreach($query->result() as $row)
+			{
+				$data[] = $row;
+			}
+		}
+		
+		$query->free_result();
+
+        return $data;
+    }
 	
 	function top($num) 
 	{
