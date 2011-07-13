@@ -168,7 +168,7 @@
 			$this->load->view('header', $include);
 			
 			// bussines logic 
-			$view_data['model'] = $this->entries->selectLast(36);
+			$view_data['model'] = $this->entries->selectLast(25);
             $view_data['top_contributors'] = $this->entries->getTopContributors(8);
             $view_data['top_voted'] = $this->entries->top(8);
 
