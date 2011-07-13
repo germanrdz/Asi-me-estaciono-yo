@@ -117,8 +117,7 @@
                 }
 
                 $include["user"] = $user;
-            
-				
+            				
 				// load views
 				$this->load->view('header', $include);
 				$this->load->view('view', $view_data);
@@ -171,7 +170,8 @@
 			// bussines logic 
 			$view_data['model'] = $this->entries->selectLast(36);
             $view_data['top_contributors'] = $this->entries->getTopContributors(8);
-			
+            $view_data['top_voted'] = $this->entries->top(8);
+
 			// load view
 			$this->load->view('home', $view_data);
 		

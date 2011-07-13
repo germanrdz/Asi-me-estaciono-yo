@@ -67,6 +67,32 @@
                  
                  <? endforeach; ?>
                 </ul>
+
+
+                 <h3>Imagenes mejor votadas</h3>
+                 <ul>
+                 <? $i = 0; ?>
+                 <? foreach($top_voted as $top): ?>
+                 <? $i++; ?>
+                 <li>
+                 <span class="avatar">
+                 <?= img("public/uploaded/small/". $top->image .".jpg"); ?>
+                 
+                 <? if ($top->votes >= 0): ?>
+                 <span class="votes green">+<?= $top->votes ?></span>
+                 <? else: ?>
+                 <span class="votes red"><?= $top->votes ?></span>
+                 <? endif; ?>
+                 
+                 </span>
+                 <span class="name">
+                 <?= anchor("//view/" . $top->id, $top->title) ?></span><br />
+                 <span class="count"><b><?= $top->name ?></b></span>
+                 </li>
+                 <? endforeach; ?>
+                </ul>
+
+
             </div>
 			
 		</div> <!-- content -->
