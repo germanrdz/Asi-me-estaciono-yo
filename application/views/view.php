@@ -27,15 +27,8 @@
 			</div>
 		
 			<div class="toiletinfo">
-			
-				<div class="uploaded">
-					<span class="location"><?= $toilet->title; ?></span><br />
-					<span class="name">en <?= $toilet->location ?> hace <?= time_since($toilet->created) ?><br />
-     por: <?= anchor("http://www.facebook.com/profile.php?id=" . $toilet->userid, $toilet->name); ?></span>
-				</div>
 		
-				<div class="votes">
-
+              <div class="votes">
 					<? if ($this->session->userdata($toilet->id) > 0 || $this->session->userdata($toilet->id) == 0): ?>
 						<?= anchor("/main/voteup/" . $toilet->id, img("public/images/up.png"), 'id="voteup" onclick="javascript: return false;"'); ?> 
 					<? endif; ?>
@@ -51,10 +44,23 @@
 					<? if ($this->session->userdata($toilet->id) < 0 || $this->session->userdata($toilet->id) == 0): ?>
 						<?= anchor("/main/votedown/" . $toilet->id, img("public/images/down.png"), 'id="votedown" onclick="javascript: return false;"'); ?> 
 					<? endif; ?>
+               </div>
+
+				<div class="uploaded">
+					<span class="location"><?= $toilet->title; ?></span><br />
+					<span class="name">en <i><?= $toilet->location ?></i> hace <i><?= time_since($toilet->created) ?></i><br />
+                    por: <?= anchor("http://www.facebook.com/profile.php?id=" . $toilet->userid, $toilet->name); ?></span>
 				</div>
-		
+				
 			</div>
-			
+
+            
+           <h3>Mapa de la foto</h3>
+
+               <div class="map" style="margin: 0 auto">
+               <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=10&size=640x150&maptype=roadmap&markers=color:red%7Clabel:E%7C40.702147,-74.015794&sensor=false" />
+               </div>
+                    			
 			<div class="comments">
 				<?
 					$url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];

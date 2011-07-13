@@ -234,6 +234,25 @@ class entries extends Model {
 		return $data;
 	}
 
+
+    function getImageLocation($image) {
+
+        // if file exists
+        $exif = exif_read_data('public/uploaded/originals/' . $image . ".jpg", 0, true);
+        
+        foreach ($exif as $key => $section) {
+            foreach ($section as $name => $val) {
+                //                echo "$key.$name: $val<br />\n";
+                }
+        }
+        
+        $data["Latitude"] = $exif["GPS"]["GPSLatitude"];
+        $data["Longitude"] = $exif["GPS"]["GPSLongitude"];
+        
+        // print_r($exif["GPS"]["GPSLatitude"]);
+        // print_r($exif["GPS"]["GPSLongitude"]);
+    }
+
 	function insert() 
 	{
 		$error = "OK";
@@ -296,6 +315,9 @@ class entries extends Model {
 			'ip'		=>	GetHostByName($_SERVER['REMOTE_ADDR']),
 			'active'	=>	1
 		);
+
+        // saving original image
+        move_uploaded_file($file["tmp_name"], "public/uploaded/originals/" . $preview . ".jpg");
 		
 		$this->db->insert("entries", $data);
 	

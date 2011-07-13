@@ -2,11 +2,14 @@
 #toilet h1 {
 	text-align: center;
 	margin-bottom: 10px;
+    margin-top: 0px;
 }
 
 #toilet .image {
 	width: 100%;
 	text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #toilet .image span {
@@ -27,7 +30,13 @@
 	vertical-align: middle;
 }
 
-#toilet .toiletinfo,
+#toilet .toiletinfo {
+    overflow: hidden;
+    width: 700px;
+    margin: 0 auto;
+    padding: 20px 0px;
+}
+
 #toilet .comments {
 	width: 700px;
 	margin: 0 auto;
@@ -37,6 +46,9 @@
 
 #toilet .uploaded {
 	float: left;
+    margin-left: 15px;
+    margin-top: -18px;
+    width: 500px;
 }
 
 #toilet .location {
@@ -49,7 +61,7 @@
 }
 
 #toilet .votes {
-	float: right;
+	float: left;
 }
 
 #toilet .votes .count {
@@ -57,6 +69,12 @@
 	font-weight: bold;
 	padding: 6px;
 	color: #FFF;
+}
+
+#toilet .map {
+    margin: 0 auto;
+    width: 700px;
+    text-align: center;
 }
 
 #toilet .green {
