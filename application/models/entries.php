@@ -237,22 +237,79 @@ class entries extends Model {
 
     function getImageLocation($image) {
 
+        $data["coords"] = false;
+
         // if file exists
-        $exif = exif_read_data('public/uploaded/originals/' . $image . ".jpg", 0, true);
+        if (file_exists('public/uploaded/originals/' . $image . ".jpg")) {
+            
+            $exif = exif_read_data('public/uploaded/originals/' . $image . ".jpg", 0, true);
         
-        foreach ($exif as $key => $section) {
-            foreach ($section as $name => $val) {
-                //                echo "$key.$name: $val<br />\n";
-                }
+            /* foreach ($exif as $key => $section) { */
+            /*     foreach ($section as $name => $val) { */
+            /*         //  echo "$key.$name: $val<br />\n"; */
+            /*     } */
+            /* } */
+        
+            /* $aLat = $exif["GPS"]["GPSLatitude"]; */
+            /* $aLong = $exif["GPS"]["GPSLongitude"]; */
+            /* $strLatRef = $exif["GPS"]["GPSLatitudeRef"]; */
+            /* $strLongRef = $exif["GPS"]["GPSLongitudeRef"]; */
+            
+            /* $fLat = ($aLat[0] + $aLat[1]/60 + $aLat[2]/3600) * ($strLatRef == "N" ? 1 : -1);   */
+            /* $fLong = ($aLong[0] + $aLong[1]/60 + $aLong[2]/3600) * ($strLongRef == "W" ? -1 : 1);   */
+            
+            /* $data["coords"] = $fLat + "," + $fLong; */
+            
+            //print_r($exif["GPS"]["GPSLatitude"]);
+            //print_r($exif["GPS"]["GPSLongitude"]);
+
+            if ($exif) {
+                $lat = $exif['GPS']['GPSLatitude']; 
+                $log = $exif['GPS']['GPSLongitude'];
+                if (!$lat || !$log) return;
+                
+                // latitude values //
+                $lat_degrees = $this->divide($lat[0]);
+                $lat_minutes = $this->divide($lat[1]);
+                $lat_seconds = $this->divide($lat[2]);
+                $lat_hemi = $exif['GPS']['GPSLatitudeRef'];
+                
+                // longitude values //
+                $log_degrees = $this->divide($log[0]);
+                $log_minutes = $this->divide($log[1]);
+                $log_seconds = $this->divide($log[2]);
+                $log_hemi = $exif['GPS']['GPSLongitudeRef'];
+                
+                $lat_decimal = $this->toDecimal($lat_degrees, $lat_minutes, $lat_seconds, $lat_hemi);
+                $log_decimal = $this->toDecimal($log_degrees, $log_minutes, $log_seconds, $log_hemi);
+                
+                $data["coords"] = $lat_decimal . "," . $log_decimal;
+                
+                // echo $data["coords"];
+            }
         }
         
-        $data["Latitude"] = $exif["GPS"]["GPSLatitude"];
-        $data["Longitude"] = $exif["GPS"]["GPSLongitude"];
-        
-        // print_r($exif["GPS"]["GPSLatitude"]);
-        // print_r($exif["GPS"]["GPSLongitude"]);
+        return $data["coords"];
+
     }
 
+    
+    private  function toDecimal($deg, $min, $sec, $hemi) {
+        $d = $deg + $min/60 + $sec/3600;
+        return ($hemi=='S' || $hemi=='W') ? $d*=-1 : $d;
+    }
+    
+    private function divide($a) {
+        // evaluate the string fraction and return a float //	
+        $e = explode('/', $a);
+        // prevent division by zero //
+        if (!$e[0] || !$e[1]) {
+            return 0;
+        }	else{
+            return $e[0] / $e[1];
+        }
+    }
+    
 	function insert() 
 	{
 		$error = "OK";

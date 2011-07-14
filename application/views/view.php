@@ -54,13 +54,16 @@
 				
 			</div>
 
-            
+            <? if($location): ?>
+
            <h3>Mapa de la foto</h3>
 
                <div class="map" style="margin: 0 auto">
-               <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=10&size=640x150&maptype=roadmap&markers=color:red%7Clabel:E%7C40.702147,-74.015794&sensor=false" />
+               <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=640x150&maptype=roadmap&markers=color:red%7Clabel:E%7C<?= $location ?>&sensor=false" />
                </div>
-                    			
+            
+           <? endif; ?>
+        			
 			<div class="comments">
 				<?
 					$url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
@@ -68,6 +71,7 @@
 			     <fb:comments href="<?= $url; ?>" num_posts="15" width="700"></fb:comments>
 			</div>
 
+            
 
 		</div>
 		

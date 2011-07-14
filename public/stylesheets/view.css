@@ -34,7 +34,7 @@
     overflow: hidden;
     width: 700px;
     margin: 0 auto;
-    padding: 20px 0px;
+    padding: 20px 0px 10px 0px;
 }
 
 #toilet .comments {
@@ -61,7 +61,7 @@
 }
 
 #toilet .votes {
-	float: left;
+	float: right;
 }
 
 #toilet .votes .count {

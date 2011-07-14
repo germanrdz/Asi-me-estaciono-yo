@@ -50,12 +50,7 @@ var Application = {
 
         var username = "Anonymous";
         var query = FB.Data.query('select name, uid from user where uid={0}', response.session.uid);
-        
-        query.wait(function(rows) {
-            $("#username").html(rows[0].name + " ");
-            $("#username_input").val(rows[0].name);
-        });        
-        
+                
         //debugger;
 
         var upload_form = $.FORM({ action: "main", method: "post", enctype: "multipart/form-data" }, 
@@ -84,10 +79,17 @@ var Application = {
                                    $.A({ id: "fb_logout" }, "(cerrar sesion)")
                                   );
         
-        $("#login").html("").append(logged_header);
-        $("#upload .content").html("").append(upload_form);
+        query.wait(function(rows) {
+            $("#login").html("").append(logged_header);
+            $("#upload .content").html("").append(upload_form);
         
-        Application.init();
+            $("#username").html(rows[0].name + " ");
+            $("#username_input").val(rows[0].name);
+
+            Application.init();
+        });        
+        
+        
     }
 
 };

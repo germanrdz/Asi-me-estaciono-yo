@@ -96,7 +96,6 @@
 				$view_data['model'] = $this->entries->getId($id);
 				$view_data['previous'] = $this->entries->getPrevious($id);
 				$view_data['next'] = $this->entries->getNext($id);
-
                 $view_data['location'] = $this->entries->getImageLocation($view_data["model"][0]->image);
 				
 				if (count($view_data["model"]) > 0) 
