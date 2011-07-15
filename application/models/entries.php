@@ -263,7 +263,7 @@ class entries extends Model {
             //print_r($exif["GPS"]["GPSLatitude"]);
             //print_r($exif["GPS"]["GPSLongitude"]);
 
-            if ($exif) {
+            if ($exif && isset($exif['GPS'])) {
                 $lat = $exif['GPS']['GPSLatitude']; 
                 $log = $exif['GPS']['GPSLongitude'];
                 if (!$lat || !$log) return;
