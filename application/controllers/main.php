@@ -1,4 +1,4 @@
-<?php
+7<?php
 
 	class Main extends Controller
 	{
@@ -17,10 +17,14 @@
 
 			date_default_timezone_set('America/Hermosillo');
 
-            $this->config->load('facebook');			
+            $this->config->load('facebook');
+            $this->config->load('mobile_tokens');
 			
             define('FACEBOOK_APP_ID', $this->config->item("facebook_appid"));
 			define('FACEBOOK_SECRET', $this->config->item("facebook_secret"));
+            
+            define('IPHONE_TOKEN', $this->config->item("iphone_token"));
+            define('ANDROID_TOKEN', $this->config->item("android_token"));                
         }
 		
 		function top() {
@@ -211,18 +215,20 @@
 
         function iphoneUpload()
         {
-
             if ($_POST) {
                 echo "post received <br />";
                 echo "<pre>";
                 print_r($_POST);
                 echo "</pre>";
-                die();
+                
+                if ($input->post("token") == IPHONE_TOKEN) { 
+                    echo $this->entries->insert();
+                }
+                
             }
             else {
                 redirect('/', 'refresh');
             }
-
         }
 
 	}
