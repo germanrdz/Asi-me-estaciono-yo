@@ -100,6 +100,7 @@ class entries extends Model {
         $data = array();
 
         $this->db->select("name, userid, count(*) as count");
+        $this->db->where("active",1);
         $this->db->order_by("count", "DESC");
         $this->db->group_by("name");
         $query = $this->db->get('entries', $limit);

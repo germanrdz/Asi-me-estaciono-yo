@@ -96,8 +96,10 @@
 				$view_data['model'] = $this->entries->getId($id);
 				$view_data['previous'] = $this->entries->getPrevious($id);
 				$view_data['next'] = $this->entries->getNext($id);
+
                 $view_data['location'] = $this->entries->getImageLocation($view_data["model"][0]->image);
-				
+                //$view_data['location'] = false;
+
 				if (count($view_data["model"]) > 0) 
 				{
 					$include["title"] = $view_data["model"][0]->title;

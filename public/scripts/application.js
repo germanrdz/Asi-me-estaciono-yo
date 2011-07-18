@@ -85,7 +85,6 @@ var Application = {
         
             $("#username").html(rows[0].name + " ");
             $("#username_input").val(rows[0].name);
-
             Application.init();
         });        
         
