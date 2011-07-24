@@ -216,10 +216,10 @@
         function iphoneUpload()
         {
             if ($_POST) {
-                echo "post received <br />";
-                echo "<pre>";
-                print_r($_POST);
-                echo "</pre>";
+                //echo "post received <br />";
+                //                echo "<pre>";
+                //print_r($_POST);
+                // echo "</pre>";
                 
                 if ($input->post("token") == IPHONE_TOKEN) { 
                     echo $this->entries->insert();
