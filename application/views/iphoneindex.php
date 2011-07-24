@@ -8,7 +8,7 @@
 		<location><?= $item->location; ?></location>
 		<uploadedDate><?= $item->created; ?></uploadedDate>
 		<votes><?= $item->votes; ?></votes>
-
+        <imageURL><?= $item->image; ?></imageURL>
 	</image>
  <? endforeach; ?>
 </images>
