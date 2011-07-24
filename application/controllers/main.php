@@ -1,4 +1,4 @@
-7<?php
+<?php
 
 	class Main extends Controller
 	{
@@ -221,7 +221,7 @@
                 //print_r($_POST);
                 // echo "</pre>";
                 
-                if ($input->post("token") == IPHONE_TOKEN) { 
+                if ($this->input->post("token") == IPHONE_TOKEN) { 
                     echo $this->entries->insert();
                 }
                 
@@ -229,6 +229,18 @@
             else {
                 redirect('/', 'refresh');
             }
+        }
+
+        function iphoneIndex()
+        {
+            $this->load->model("entries");
+
+			$view_data['model'] = $this->entries->selectLast(100);
+            
+            header ("Content-Type:text/xml");
+            echo '<?xml version="1.0" encoding="ISO-8859-1" ?>';
+            $this->load->view("iphoneindex", $view_data);
+        
         }
 
 	}
