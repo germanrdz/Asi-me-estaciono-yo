@@ -50,7 +50,9 @@
 					<span class="location"><?= $toilet->title; ?></span><br />
 					<span class="name">en <i><?= $toilet->location ?></i> hace <i><?= time_since($toilet->created) ?></i><br />
                     por: <?= anchor("http://www.facebook.com/profile.php?id=" . $toilet->userid, $toilet->name); ?></span>
-				</div>
+                    
+
+</div>
 				
 			</div>
 

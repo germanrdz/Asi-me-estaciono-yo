@@ -60,6 +60,11 @@
 	
 }
 
+#toilet .addthis {
+   float: right; 
+   margin-right: 20px;
+}
+
 #toilet .votes {
 	float: right;
 }

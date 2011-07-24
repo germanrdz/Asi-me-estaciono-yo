@@ -137,14 +137,25 @@
 		
 		function index($page = 0)
 		{
-			
+		
+            $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, 
+                         FACEBOOK_SECRET);
+            
+			if ($fbcookie) {
+				$user = $this->facebook->getCurrentUser($fbcookie);
+			}
+			else {
+				$user = array();
+			}	
+
 			// process Upload
-			if ($_POST) {
+			if ($_POST && $fbcookie) {
 				$this->load->helper("random");
 				$error = $this->entries->insert();
 				
 				if ($error == "OK") {
-					$this->session->set_flashdata('success', "Tu foto ha sido guardada satisfactoriamente");
+					$this->session->set_flashdata('success', 
+                        "Tu foto ha sido guardada satisfactoriamente");
 					redirect('//main', 'location');
 				}
 				else
@@ -153,15 +164,6 @@
 					redirect('//main', 'location');
 				}
 			}
-
-            $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
-            
-			if ($fbcookie) {
-				$user = $this->facebook->getCurrentUser($fbcookie);
-			}
-			else {
-				$user = array();
-			}	
 
 			// load main header
 			$include["stylesheets"] = array();
@@ -220,11 +222,16 @@
                 //                echo "<pre>";
                 //print_r($_POST);
                 // echo "</pre>";
-                
+         
+                $this->load->model("entries");
+				$this->load->helper("random");
+       
                 if ($this->input->post("token") == IPHONE_TOKEN) { 
                     echo $this->entries->insert();
                 }
-                
+                else {
+                    echo "Error, wrong auth token";
+                }
             }
             else {
                 redirect('/', 'refresh');
@@ -238,7 +245,7 @@
 			$view_data['model'] = $this->entries->selectLast(100);
             
             header ("Content-Type:text/xml");
-            echo '<?xml version="1.0" encoding="ISO-8859-1" ?>';
+            echo '<?xml version="1.0" encoding="UTF_8" ?>';
             $this->load->view("iphoneindex", $view_data);
         
         }
