@@ -100,35 +100,44 @@
                 $view_data['model'] = $this->entries->getId($id);
 				$view_data['previous'] = $this->entries->getPrevious($id);
 				$view_data['next'] = $this->entries->getNext($id);                
-                
-                $view_data['location'] = $this->entries->getImageLocation($view_data["model"][0]->image);
-                //$view_data['location'] = false;
-
+                               
 				if (count($view_data["model"]) > 0) 
 				{
+                    // TODO
+                    // title is already included in model
+                    // there is no need to send it twice.
+
+                    // add title
 					$include["title"] = $view_data["model"][0]->title;
-				}
+                    
+                    // add location
+                    $view_data['location'] = $this->entries->getImageLocation($view_data["model"][0]->image);
+
+                    // add model for faceboook metatags
+                    $include["model"] = $view_data["model"];
+                
+                    $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
+                    
+                    if ($fbcookie) {
+                        $user = $this->facebook->getCurrentUser($fbcookie);
+                    }
+                    else {
+                        $user = array();
+                    }
+                    
+                    $include["user"] = $user;
+                    
+                    // load views
+                    $this->load->view('header', $include);
+                    $this->load->view('view', $view_data);
+                    $this->load->view('footer');
+                }
 				else
 				{
-					$include["title"] = "NOT FOUND";
+                    // NOT FOUND
+                    // TODO make 404 Error Screen
+                    redirect('//main', 'location');
 				}
-
-                $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
-
-                if ($fbcookie) {
-                    $user = $this->facebook->getCurrentUser($fbcookie);
-                }
-                else {
-                    $user = array();
-                }
-
-                $include["user"] = $user;
-                $include["model"] = $view_data["model"];
-
-				// load views
-				$this->load->view('header', $include);
-				$this->load->view('view', $view_data);
-				$this->load->view('footer');
 			}
 			else 
 			{
