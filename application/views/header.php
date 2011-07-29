@@ -15,7 +15,7 @@
         <meta property="og:image" content="<?= base_url() . "public/uploaded/" . $model->image .".jpg"; ?> " />
         <meta property="og:site_name" content="Asi me estaciono yo"/>
         <meta property="fb:admins" content="757216207"/>
-        <meta property="fb:app_id" content="105499334967" />
+        <meta property="fb:app_id" content="133512650062074" />
         <meta property="og:description" content="Asi me estaciono yo! y que | Sube tus fotos de gente mal estacionada."/>
         <? endif; ?>
 
