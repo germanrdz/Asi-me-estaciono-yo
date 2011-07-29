@@ -94,13 +94,13 @@
 				// load main header
 				$include["stylesheets"] = array('view');
 				$include["scripts"] = array("view");
-				$include["active_page"] = "view";
-								
-				// bussines logic 
-				$view_data['model'] = $this->entries->getId($id);
-				$view_data['previous'] = $this->entries->getPrevious($id);
-				$view_data['next'] = $this->entries->getNext($id);
+				$include["active_page"] = "view"; 
 
+				// bussines logic 
+                $view_data['model'] = $this->entries->getId($id);
+				$view_data['previous'] = $this->entries->getPrevious($id);
+				$view_data['next'] = $this->entries->getNext($id);                
+                
                 $view_data['location'] = $this->entries->getImageLocation($view_data["model"][0]->image);
                 //$view_data['location'] = false;
 
@@ -123,7 +123,8 @@
                 }
 
                 $include["user"] = $user;
-            				
+                $include["model"] = $view_data["model"];
+
 				// load views
 				$this->load->view('header', $include);
 				$this->load->view('view', $view_data);

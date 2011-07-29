@@ -1,13 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#"> 
 	<head> 
 		<base href="<?= base_url() ?>" />
-		
-		<!-- <link REL="SHORTCUT ICON" HREF="public/toiletfav.ico"> -->
-		
+
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
 		<meta name="robots" content="all" /> 
 		<meta name="description" content="Asi me estaciono yo! y que | Sube tus fotos de gente mal estacionada">
+
+     <? if (isset($model)): ?>
+        <? $model = $model[0]; ?>
+        <meta property="og:title" content='<?= $model->title; ?>' />
+        <meta property="og:type" content="landmark"/>
+        <meta property="og:url" content="<?= base_url() . "view/" . $model->id; ?>" />
+        <meta property="og:image" content="<?= base_url() . "public/uploaded/" . $model->image .".jpg"; ?> " />
+        <meta property="og:site_name" content="Asi me estaciono yo"/>
+        <meta property="fb:admins" content="757216207"/>
+        <meta property="fb:app_id" content="105499334967" />
+        <meta property="og:description" content="Asi me estaciono yo! y que | Sube tus fotos de gente mal estacionada."/>
+        <? endif; ?>
 
 		<?= link_tag("public/stylesheets/master.css"); ?>
 
@@ -23,8 +33,8 @@
 		<script src="public/scripts/<?= $file ?>.js" type="text/javascript" charset="utf-8"></script>
 		<? endforeach; ?>
 		
-		<title>Asi me estaciono yo
-		<? if ($title != "") { echo " ^ " . $title; } ?>
+		<title>
+		<? if ($title != "") { echo $title . " ^ "; } ?> Asi me estaciono yo
 		</title> 
 		
 		<!-- Google Analytics -->
