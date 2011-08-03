@@ -92,8 +92,8 @@
 				$this->load->helper("random");
 			
 				// load main header
-				$include["stylesheets"] = array('view');
-				$include["scripts"] = array("view");
+				$include["stylesheets"] = array('view',"facebox");
+				$include["scripts"] = array("view", "facebox");
 				$include["active_page"] = "view"; 
 
 				// bussines logic 

@@ -67,6 +67,19 @@
 
 #toilet .votes {
 	float: right;
+    text-align: center;
+}
+
+#toilet .votes .disclamer { 
+    font-size: 10px;
+}
+
+#toilet .votes #info { 
+    display: none; 
+}
+
+#facebox .content h2 { 
+   margin-top: 0px;
 }
 
 #toilet .votes .count {

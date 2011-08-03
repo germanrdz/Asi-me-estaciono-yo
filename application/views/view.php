@@ -39,20 +39,36 @@
 					<? else: ?>
 						<span class="count red"><?= $toilet->votes ?></span>
 					<? endif; ?>
-					</span>
+					
+                    </span>
 					
 					<? if ($this->session->userdata($toilet->id) < 0 || $this->session->userdata($toilet->id) == 0): ?>
 						<?= anchor("/main/votedown/" . $toilet->id, img("public/images/down.png"), 'id="votedown" onclick="javascript: return false;"'); ?> 
 					<? endif; ?>
+
+                    <br />
+                    <span class="disclamer"><a href="#info" rel="facebox">¿que es esto?</a></span>
+                    
+                    <div id="info"> 
+                        <h2>¿Confundido en como votar?</h2>
+                        
+                        <p>En realidad es bastante sencillo:</p>
+
+                        <p>
+                            <b>Vota +</b> si piensas que la foto es una buena contribucion al sitio.
+                        </p>
+                        <p>
+                            <b>Vota -</b> si piensas que la foto <u>no</u> es una buena contribucion al sitio.
+                        </p>
+                    </div>
+
                </div>
 
 				<div class="uploaded">
 					<span class="location"><?= $toilet->title; ?></span><br />
 					<span class="name">en <i><?= $toilet->location ?></i> hace <i><?= time_since($toilet->created) ?></i><br />
                     por: <?= anchor("http://www.facebook.com/profile.php?id=" . $toilet->userid, $toilet->name); ?></span>
-                    
-
-</div>
+               </div>
 				
 			</div>
 

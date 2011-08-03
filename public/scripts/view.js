@@ -27,7 +27,9 @@ var View = {
 		votedown.click(function(){
 			View.voteDown(this);
 		});
-	},
+        
+        $('a[rel*=facebox]').facebox();
+    },
 	
 	showNext: function() {
         if (this.link_next.size() > 0) {
