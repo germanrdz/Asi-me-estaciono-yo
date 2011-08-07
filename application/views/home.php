@@ -50,23 +50,6 @@
 			</div>
 
             <div class="right">
-                <h3>Top de Contribuidores</h3>
-                <ul>
-                 <? $i = 0; ?>
-                 <? foreach($top_contributors as $top): ?>
-                 <? $i++; ?>
-                 <li>
-                 <span class="avatar">
-                 <img class="picture" src="http://graph.facebook.com/<?= $top->userid ?>/picture?type=square" />
-                 <span class="votes green"><?= $i ?></span>                 
-                 </span>
-                 <span class="name">
-                 <?= anchor("http://www.facebook.com/profile.php?id=" . $top->userid, $top->name) ?></span><br />
-                 <span class="count"><b><?= $top->count?></b> imagenes</span>
-                 </li>
-                 
-                 <? endforeach; ?>
-                </ul>
 
 
                  <h3>Imagenes mejor votadas</h3>
@@ -92,6 +75,24 @@
                  <? endforeach; ?>
                 </ul>
 
+
+                <h3>Top de Contribuidores</h3>
+                <ul>
+                 <? $i = 0; ?>
+                 <? foreach($top_contributors as $top): ?>
+                 <? $i++; ?>
+                 <li>
+                 <span class="avatar">
+                 <img class="picture" src="http://graph.facebook.com/<?= $top->userid ?>/picture?type=square" />
+                 <span class="votes green"><?= $i ?></span>                 
+                 </span>
+                 <span class="name">
+                 <?= anchor("http://www.facebook.com/profile.php?id=" . $top->userid, $top->name) ?></span><br />
+                 <span class="count"><b><?= $top->count?></b> imagenes</span>
+                 </li>
+                 
+                 <? endforeach; ?>
+                </ul>
 
             </div>
 			
