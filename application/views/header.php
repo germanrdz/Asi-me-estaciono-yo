@@ -5,9 +5,9 @@
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
 		<meta name="robots" content="all" /> 
-		<meta name="description" content="Asi me estaciono yo! y que | Sube tus fotos de gente mal estacionada">
+		<meta name="description" content="Asi me estaciono yo! y que | Sube tus fotos de gente mal estacionada" />
 
-     <? if (isset($model)): ?>
+        <? if (isset($model)): ?>
         <? $model = $model[0]; ?>
         <meta property="og:title" content='<?= $model->title; ?>' />
         <meta property="og:type" content="landmark"/>
@@ -38,20 +38,20 @@
 		</title> 
 		
 		<!-- Google Analytics -->
-       <script type="text/javascript">
+        <script type="text/javascript">
 
-     var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-8479264-8']);
-_gaq.push(['_trackPageview']);
-(function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-8479264-8']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
 
-</script>
+        </script>
 
-	<!-- End Google Analytics -->
+        <!-- End Google Analytics -->
 	</head>
 
 	<body>
@@ -65,21 +65,27 @@ _gaq.push(['_trackPageview']);
 				<?= anchor("/", "Inicio", $homeclass); ?><?= anchor("top", "Las mas votadas", $topclass); ?><?= anchor("random", "100 Aleatorias", $randomclass); ?><?= anchor("main/contact", "Contacto"); ?>				
 			</div>
 
-                    <div id="login">
-                    <? if (!$user): ?>
-                        <fb:login-button>Login with Facebook</fb:login-button>
-                    <? else: ?>
-					    <a href="javascript:;"><img class="picture" src="http://graph.facebook.com/<?= $user->id ?>/picture?type=square" height="20" align="left"/> </a>
-					    <?= $user->name ?>
-					    <a id="fb_logout">(cerrar sesion)</a>
-					<? endif; ?>
-					</div>
-		
+            <div id="login">
+                <? if (!$user): ?>
+
+
+                    <div class="fb-login-button" data-scope="email,user_checkins">
+                        Login with Facebook
+                    </div>
+                           
+                 
+                <? else: ?>
+                <a href="javascript:;"><img class="picture" src="http://graph.facebook.com/<?= $user["id"] ?>/picture?type=square" height="20" align="left"/> </a>
+                <?= $user["name"] ?>
+                <a id="fb_logout">(cerrar sesion)</a>
+                <? endif; ?>
+            </div>
+            
 			<div class="sharing">
 				<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.asimeestacionoyo.com/" data-text="Has visto a alguien mal estacionado? Tomales una foto! Reportalos en AsiMeEstacionoYo.com!" data-count="horizontal" data-via="GerManson">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 				<iframe src="http://www.facebook.com/plugins/like.php?href=htp%3A%2F%2Fwww.asimeestacionoyo.com&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
 			</div>
-		
+            
 		</div>
 
 		<div id="header" />
@@ -99,8 +105,8 @@ _gaq.push(['_trackPageview']);
 					    <?= form_input("title", "Titulo de la foto", 'class="overlay" id="name"'); ?> 
 					    <?= form_input("location", "Lugar donde fue tomada", 'class="overlay" id="location"'); ?> 
 							
-                    <?= form_hidden("name", $user->name); ?>
-                    <?= form_hidden("userid", $user->id); ?>
+                        <?= form_hidden("name", $user["name"]); ?>
+                    <?= form_hidden("userid", $user["id"]); ?>
 
 						<div class="image_upload">
                             <span>Imagen:</span>
@@ -115,7 +121,11 @@ _gaq.push(['_trackPageview']);
 					<?= form_close(); ?>
                     <? else: ?>
                     <p>Inicia sesion para poder subir fotos, Es muy facil!</p>
-                    <p><fb:login-button>Login with Facebook</fb:login-button></p>
+
+                    <div class="fb-login-button" data-scope="email,user_checkins">
+                        Login with Facebook
+                    </div>
+            
                     <? endif; ?>
                     </div>
 				</div>

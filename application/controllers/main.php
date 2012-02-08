@@ -13,7 +13,8 @@
 			$this->load->library('session');	
 			$this->load->helper('form');			
             
-            $this->load->library('facebook');
+            include_once('application/libraries/facebook.php');
+            //$this->load->library('facebook');
 
 			date_default_timezone_set('America/Hermosillo');
 
@@ -25,6 +26,7 @@
             
             define('IPHONE_TOKEN', $this->config->item("iphone_token"));
             define('ANDROID_TOKEN', $this->config->item("android_token"));                
+
         }
 		
 		function top() {
@@ -35,17 +37,27 @@
 						
 			// bussines logic 
 			$view_data['model'] = $this->entries->top(100);
+            
 
-            $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET); 
+            $facebook = new Facebook(array('appId' => FACEBOOK_APP_ID, 'secret' => FACEBOOK_SECRET));
+            $user = $facebook->getUser();
 
-            if ($fbcookie) {
-                $user = $this->facebook->getCurrentUser($fbcookie);
+            if ($user) {
+                try {
+                    // Proceed knowing you have a logged in user who's authenticated.
+                    $user_profile = $facebook->api('/me');
+                    //var_dump($user_profile);
+                } catch (FacebookApiException $e) {
+                    //echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+                    $user = null;
+                    $user_profile = null;
+                }
             }
             else {
-                $user = array();
+                $user_profile = null;
             }
-            
-            $include["user"] = $user;
+ 
+            $include["user"] = $user_profile;
             $include["title"] = "Mejor votadas";
 
 			// load view
@@ -66,15 +78,26 @@
 			// bussines logic 
 			$view_data['model'] = $this->entries->random(100);	
 
-            $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET); 
-            if ($fbcookie) {
-                $user = $this->facebook->getCurrentUser($fbcookie);
+
+            $facebook = new Facebook(array('appId' => FACEBOOK_APP_ID, 'secret' => FACEBOOK_SECRET));
+            $user = $facebook->getUser();
+
+            if ($user) {
+                try {
+                    // Proceed knowing you have a logged in user who's authenticated.
+                    $user_profile = $facebook->api('/me');
+                    //var_dump($user_profile);
+                } catch (FacebookApiException $e) {
+                    //echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+                    $user = null;
+                    $user_profile = null;
+                }
             }
             else {
-                $user = array();
+                $user_profile = null;
             }
-			
-            $include["user"] = $user;
+
+            $include["user"] = $user_profile;
             $include["title"] = "100 Aleatorias";
 
 			// load view
@@ -115,17 +138,27 @@
 
                     // add model for faceboook metatags
                     $include["model"] = $view_data["model"];
-                
-                    $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
-                    
-                    if ($fbcookie) {
-                        $user = $this->facebook->getCurrentUser($fbcookie);
+
+
+                    $facebook = new Facebook(array('appId' => FACEBOOK_APP_ID, 'secret' => FACEBOOK_SECRET));
+                    $user = $facebook->getUser();
+
+                    if ($user) {
+                        try {
+                            // Proceed knowing you have a logged in user who's authenticated.
+                            $user_profile = $facebook->api('/me');
+                            //var_dump($user_profile);
+                        } catch (FacebookApiException $e) {
+                            //echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+                            $user = null;
+                            $user_profile = null;
+                        }
                     }
                     else {
-                        $user = array();
+                        $user_profile = null;
                     }
                     
-                    $include["user"] = $user;
+                    $include["user"] = $user_profile;
                     
                     // load views
                     $this->load->view('header', $include);
@@ -148,19 +181,30 @@
 		function index($page = 0)
 		{
 		
-            $fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, 
-                         FACEBOOK_SECRET);
-            
-			if ($fbcookie) {
-				$user = $this->facebook->getCurrentUser($fbcookie);
-			}
-			else {
-				$user = array();
-			}	
+            //$fbcookie =  $this->facebook->get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
+
+            $facebook = new Facebook(array('appId' => FACEBOOK_APP_ID, 'secret' => FACEBOOK_SECRET));
+            $user = $facebook->getUser();
+
+            if ($user) {
+                try {
+                    // Proceed knowing you have a logged in user who's authenticated.
+                    $user_profile = $facebook->api('/me');
+                    //var_dump($user_profile);
+                } catch (FacebookApiException $e) {
+                    //echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+                    $user = null;
+                    $user_profile = null;
+                }
+            }
+            else {
+                $user_profile = null;
+            }
 
 			// process Upload
-			if ($_POST && $fbcookie) {
+			if ($_POST && $user) {
 				$this->load->helper("random");
+
 				$error = $this->entries->insert();
 				
 				if ($error == "OK") {
@@ -181,7 +225,7 @@
 			$include["active_page"] = "home";
 			
 			$include["title"] = "";
-			$include["user"] = $user;
+			$include["user"] = $user_profile;
             
 			$this->load->view('header', $include);
 			
