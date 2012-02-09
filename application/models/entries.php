@@ -243,8 +243,36 @@ class entries extends Model {
         // if file exists
         if (file_exists('public/uploaded/originals/' . $image . ".jpg")) {
             
-            $exif = exif_read_data('public/uploaded/originals/' . $image . ".jpg", 0, true);
-        
+            try {
+                @$exif = exif_read_data('public/uploaded/originals/' . $image . ".jpg", 0, true);
+
+                if ($exif && isset($exif['GPS'])) {
+                    $lat = $exif['GPS']['GPSLatitude']; 
+                    $log = $exif['GPS']['GPSLongitude'];
+                    if (!$lat || !$log) return;
+                
+                    // latitude values //
+                    $lat_degrees = $this->divide($lat[0]);
+                    $lat_minutes = $this->divide($lat[1]);
+                    $lat_seconds = $this->divide($lat[2]);
+                    $lat_hemi = $exif['GPS']['GPSLatitudeRef'];
+                
+                    // longitude values //
+                    $log_degrees = $this->divide($log[0]);
+                    $log_minutes = $this->divide($log[1]);
+                    $log_seconds = $this->divide($log[2]);
+                    $log_hemi = $exif['GPS']['GPSLongitudeRef'];
+                
+                    $lat_decimal = $this->toDecimal($lat_degrees, $lat_minutes, $lat_seconds, $lat_hemi);
+                    $log_decimal = $this->toDecimal($log_degrees, $log_minutes, $log_seconds, $log_hemi);
+                
+                    $data["coords"] = $lat_decimal . "," . $log_decimal;
+            
+                }
+            }
+            catch(Exception $e) {
+                // do nothing
+            }
             /* foreach ($exif as $key => $section) { */
             /*     foreach ($section as $name => $val) { */
             /*         //  echo "$key.$name: $val<br />\n"; */
@@ -264,30 +292,9 @@ class entries extends Model {
             //print_r($exif["GPS"]["GPSLatitude"]);
             //print_r($exif["GPS"]["GPSLongitude"]);
 
-            if ($exif && isset($exif['GPS'])) {
-                $lat = $exif['GPS']['GPSLatitude']; 
-                $log = $exif['GPS']['GPSLongitude'];
-                if (!$lat || !$log) return;
-                
-                // latitude values //
-                $lat_degrees = $this->divide($lat[0]);
-                $lat_minutes = $this->divide($lat[1]);
-                $lat_seconds = $this->divide($lat[2]);
-                $lat_hemi = $exif['GPS']['GPSLatitudeRef'];
-                
-                // longitude values //
-                $log_degrees = $this->divide($log[0]);
-                $log_minutes = $this->divide($log[1]);
-                $log_seconds = $this->divide($log[2]);
-                $log_hemi = $exif['GPS']['GPSLongitudeRef'];
-                
-                $lat_decimal = $this->toDecimal($lat_degrees, $lat_minutes, $lat_seconds, $lat_hemi);
-                $log_decimal = $this->toDecimal($log_degrees, $log_minutes, $log_seconds, $log_hemi);
-                
-                $data["coords"] = $lat_decimal . "," . $log_decimal;
+
                 
                 // echo $data["coords"];
-            }
         }
         
         return $data["coords"];
