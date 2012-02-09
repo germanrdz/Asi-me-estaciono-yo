@@ -247,8 +247,15 @@ class entries extends Model {
                 @$exif = exif_read_data('public/uploaded/originals/' . $image . ".jpg", 0, true);
 
                 if ($exif && isset($exif['GPS'])) {
-                    $lat = $exif['GPS']['GPSLatitude']; 
-                    $log = $exif['GPS']['GPSLongitude'];
+                    
+                    $lat = null;
+                    $log = null;
+
+                    if (isset($exif['GPS']['GPSLatitude']) && isset($exif['GPS']['GPSLongitude'])) {
+                        $lat = $exif['GPS']['GPSLatitude']; 
+                        $log = $exif['GPS']['GPSLongitude'];
+                    }
+
                     if (!$lat || !$log) return;
                 
                     // latitude values //
